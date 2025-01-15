@@ -4,14 +4,14 @@
 
 
 let hounger=90;
-let sleep=0;
-let fun=80 ;
+let sleep=90;
+let fun=90 ;
 
 const hungerElement = document.getElementById("hunger");
 const sleepElement = document.getElementById("sleep");
 const funElement = document.getElementById("fun");   
 var statusTama = document.getElementById("status");
-
+var imagsElement = document.getElementById("imags");
 
 function updateStatus () {
     
@@ -19,16 +19,20 @@ function updateStatus () {
     sleepElement.textContent="slaap: "+ sleep;
     funElement.textContent="plazier: " +fun;
     if ( hounger <=50) {
-        statusTama.innerText = "ik heb honger :("
+        statusTama.innerText = "ik heb honger "
+        imagsElement.src = 'Imags/hounger.png';
     }
     else if (sleep <=50) {
-        statusTama.innerText = " ik ben moe :("
+        statusTama.innerText = " ik ben moe "
+        imagsElement.src = 'Imags/moi.png';
     }
     else if(fun <=50) {
-        statusTama.innerText = "ik wil wat leuks doen :("
+        statusTama.innerText = "ik wil wat leuks doen "
+        imagsElement.src = 'Imags/play.png';
     }
     else{
-         statusTama.innerText = " ik ben blij :)"
+         statusTama.innerText = " ik ben blij "
+         imagsElement.src = 'Imags/blij.png';
     }
 
 
