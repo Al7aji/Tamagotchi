@@ -7,24 +7,31 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <audio autoplay loop id="media-tamagotchi">
+        <source src="liedje.mp3" type="audio/mpeg" autoplay>
+    </audio>
+      
     <section class="home">
 
-        <div class="navbar">
-            <div class="row">
-                <div class="honger">100  </div>
-                <div class="slaap">100 </div>
-                <div class="plezier">100</div>
-            </div>
-        </div>
+
+
+        <nav class="navbar">
+            <ul class="row">
+                <li id="hunger">honger:0 </li>
+                <li id="sleep">slaap:0 </li>
+                <li id="fun">plezier:100 </li>
+             </ul>
+        </nav>
         
         <div class="continer">
-            <img src="/Tamagotchi/Imags/Tamagotchi.png" alt="Tamagotchi">
-            <h1>Lorem ipsum dolor sit, amet consectetur adipisicing.</h1>
+            <img src="Imags/Tamagotchi.png" alt="Tamagotchi">
+            <h1 id="status">test</h1>
+
 
         </div>
 
     </section>
-    <script src="/Tamagotchi/main.js"></script>
+    <script srs="main.js"></script>
 </body>
 </html>
 
