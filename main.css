@@ -14,7 +14,7 @@ section{
 
    height: 100vh;
    
-   background: #000;
+   
 }
 
 .navbar{
@@ -43,4 +43,5 @@ section{
 }
 .continer img{
    margin-right: 10rem;
+   width: px;
 }
