@@ -53,7 +53,7 @@ section{
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 90vh;
+   height: 80vh;
 }
 .continer h1{
    font-size: 3em;
@@ -64,4 +64,19 @@ section{
    height: 70vh;
    width: 70vh;
    border-radius: 20px;
+}
+
+.status-button{
+   height: 10vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 20px;
+
+}
+
+.status-button-style{
+   border-radius: 20px;
+   background-color: #6842ff;
+   padding: 10px;
 }

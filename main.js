@@ -1,32 +1,41 @@
 
+let stats = {
+    hunger: 100,
+    sleep: 100,
+    fun: 100,
+};
 
 
 
+function waardesomlaag(statskey, tijd) {
+    let intervalId = setInterval(() => {
+        if (stats[statskey] > 0) {
+            stats[statskey]--; 
+        } else { 
+            clearInterval(intervalId); 
+        }
+    }, tijd); 
+}
 
-let hounger=90;
-let sleep=90;
-let fun=90 ;
+const hungerElement = document.getElementById('hunger');
+const sleepElement = document.getElementById('sleep');
+const funElement = document.getElementById('fun');   
+const statusTama = document.getElementById("status");
+const imagsElement = document.getElementById("imags");
+function updateStatus () {  
+    hungerElement.textContent = "honger: " + stats['hunger'];
+    sleepElement.textContent = "slaap: " + stats['sleep'];
+    funElement.textContent = "plezier: " + stats['fun'];
 
-const hungerElement = document.getElementById("hunger");
-const sleepElement = document.getElementById("sleep");
-const funElement = document.getElementById("fun");   
-var statusTama = document.getElementById("status");
-var imagsElement = document.getElementById("imags");
-
-function updateStatus () {
-    
-    hungerElement.textContent= "honger:  " +hounger;
-    sleepElement.textContent="slaap: "+ sleep;
-    funElement.textContent="plazier: " +fun;
-    if ( hounger <=50) {
+    if ( stats['hunger'] <=50) {
         statusTama.innerText = "ik heb honger "
         imagsElement.src = 'Imags/hounger.png';
     }
-    else if (sleep <=50) {
+    else if (stats['sleep'] <=50) {
         statusTama.innerText = " ik ben moe "
         imagsElement.src = 'Imags/moi.png';
     }
-    else if(fun <=50) {
+    else if(stats['fun'] <=50) {
         statusTama.innerText = "ik wil wat leuks doen "
         imagsElement.src = 'Imags/play.png';
     }
@@ -35,7 +44,30 @@ function updateStatus () {
          imagsElement.src = 'Imags/blij.png';
     }
 
-
 };
 
-setInterval(updateStatus, 1000);
+
+function waardesomhoog(key){
+
+    stats[key]++;
+    
+};
+
+
+document.getElementById("voed-pop").addEventListener("click", function() {
+    waardesomhoog('hunger');
+});
+document.getElementById("laat-slaap").addEventListener("click", function() {
+    waardesomhoog('sleep');
+});
+document.getElementById("laat-spelen").addEventListener("click", function() {
+    waardesomhoog('fun');
+});
+
+waardesomlaag('hunger',4000);
+waardesomlaag('sleep',10000);
+waardesomlaag('fun',5000);
+setInterval(updateStatus, 1000); 
+
+
+
