@@ -5,8 +5,6 @@ let stats = {
     fun: 100,
 };
 
-
-
 function waardesomlaag(statskey, tijd) {
     let intervalId = setInterval(() => {
         if (stats[statskey] > 0) {
@@ -46,13 +44,27 @@ function updateStatus () {
 
 };
 
-
 function waardesomhoog(key){
+    
+    
+    if (stats[key] < 50){
+            stats[hunger]+=3;
 
-    stats[key]++;
+    }else if(stats[key] ==stats['hunger'] ){
+        statusTama.innerText = "ik heb niet honger "
+
+    }else if(stats[key] ==stats['sleep'] ){
+        statusTama.innerText = "ik heb niet slaap "
+    }
+    else{
+       statusTama.innerText = "ik ben blij "
+    };
+
+         
+
+
     
 };
-
 
 document.getElementById("voed-pop").addEventListener("click", function() {
     waardesomhoog('hunger');
@@ -64,8 +76,8 @@ document.getElementById("laat-spelen").addEventListener("click", function() {
     waardesomhoog('fun');
 });
 
-waardesomlaag('hunger',4000);
-waardesomlaag('sleep',10000);
+waardesomlaag('hunger',10000);
+waardesomlaag('sleep',8000);
 waardesomlaag('fun',5000);
 setInterval(updateStatus, 1000); 
 
