@@ -1,7 +1,7 @@
 
 let stats = {
     hunger: 100,
-    sleep: 100,
+    sleep: 1,
     fun: 100,
 };
 
@@ -9,6 +9,7 @@ function waardesomlaag(statskey, tijd) {
     let intervalId = setInterval(() => {
         if (stats[statskey] > 0) {
             stats[statskey]--; 
+            updateProgressBars(); 
         } else { 
             clearInterval(intervalId); 
         }
@@ -41,14 +42,24 @@ function updateStatus () {
          statusTama.innerText = " ik ben blij "
          imagsElement.src = 'Imags/blij.png';
     }
-
+    updateProgressBars(); 
 };
+function updateProgressBars() {
+    hungerElement.style.width = stats['hunger'] + "%";
+    document.getElementById('button').style.width = stats['sleep'] + "%";
+    funElement.style.width = stats['fun'] + "%";
+}
 
 function waardesomhoog(key){
-    
-    
-    if (stats[key] < 50){
-            stats[hunger]+=3;
+
+    if (stats[key] < 100){
+            stats[key] += 3;
+
+         if(stats[key] > 100){
+
+            stats[key] =100;
+         }
+        
 
     }else if(stats[key] ==stats['hunger'] ){
         statusTama.innerText = "ik heb niet honger "
@@ -60,10 +71,7 @@ function waardesomhoog(key){
        statusTama.innerText = "ik ben blij "
     };
 
-         
-
-
-    
+    updateProgressBars();      
 };
 
 document.getElementById("voed-pop").addEventListener("click", function() {
