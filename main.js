@@ -16,34 +16,44 @@ function waardesomlaag(statskey, tijd) {
     }, tijd); 
 }
 
-const hungerElement = document.getElementById('hunger');
-const sleepElement = document.getElementById('sleep');
-const funElement = document.getElementById('fun');   
+const hungerElement = document.getElementById('hunger-bar');
+const sleepElement = document.getElementById('sleep-bar');
+const funElement = document.getElementById('fun-bar');   
 const statusTama = document.getElementById("status");
 const imagsElement = document.getElementById("imags");
-function updateStatus () {  
-    hungerElement.textContent = "honger: " + stats['hunger'];
-    sleepElement.textContent = "slaap: " + stats['sleep'];
-    funElement.textContent = "plezier: " + stats['fun'];
+const hungerText = document.createElement("span");
+const sleepText = document.createElement("span");
+const funText = document.createElement("span");
 
-    if ( stats['hunger'] <=50) {
-        statusTama.innerText = "ik heb honger "
+hungerText.classList.add("progress-text");
+sleepText.classList.add("progress-text");
+funText.classList.add("progress-text");
+
+hungerElement.appendChild(hungerText);
+sleepElement.appendChild(sleepText);
+funElement.appendChild(funText);
+
+function updateStatus () {  
+    hungerText.textContent = "Honger: " + stats['hunger'];
+    sleepText.textContent = "Slaap: " + stats['sleep'];
+    funText.textContent = "Plezier: " + stats['fun'];
+
+    if (stats['hunger'] <= 50) {
+        statusTama.innerText = "Ik heb honger";
         imagsElement.src = 'Imags/hounger.png';
-    }
-    else if (stats['sleep'] <=50) {
-        statusTama.innerText = " ik ben moe "
+    } else if (stats['sleep'] <= 50) {
+        statusTama.innerText = "Ik ben moe";
         imagsElement.src = 'Imags/moi.png';
-    }
-    else if(stats['fun'] <=50) {
-        statusTama.innerText = "ik wil wat leuks doen "
+    } else if (stats['fun'] <= 50) {
+        statusTama.innerText = "Ik wil wat leuks doen";
         imagsElement.src = 'Imags/play.png';
-    }
-    else{
-         statusTama.innerText = " ik ben blij "
-         imagsElement.src = 'Imags/blij.png';
+    } else {
+        statusTama.innerText = "Ik ben blij";
+        imagsElement.src = 'Imags/blij.png';
     }
     updateProgressBars(); 
 };
+
 function updateProgressBars() {
     hungerElement.style.width = stats['hunger'] + "%";
     document.getElementById('button').style.width = stats['sleep'] + "%";
@@ -67,10 +77,6 @@ function waardesomhoog(key){
     }else if(stats[key] ==stats['sleep'] ){
         statusTama.innerText = "ik heb niet slaap "
     }
-    else{
-       statusTama.innerText = "ik ben blij "
-    };
-
     updateProgressBars();      
 };
 
@@ -87,7 +93,7 @@ document.getElementById("laat-spelen").addEventListener("click", function() {
 waardesomlaag('hunger',10000);
 waardesomlaag('sleep',8000);
 waardesomlaag('fun',5000);
-setInterval(updateStatus, 1000); 
+setInterval(updateStatus, 1000);
 
 
 
